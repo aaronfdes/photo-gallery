@@ -11,7 +11,7 @@ export class AuthService {
 
   login(username: string, password: string): Observable<boolean> {
     //make api call and check this 
-    if (username == "admin" && password == "admin") {
+    if (username == "a" && password == "a") {
       this.isLoggedIn = true;
     }
     return Observable.of(true);
