@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Http, Headers } from '@angular/http';
 
+import { environment } from '../../../environments/environment';
 import { Album } from '../../model/album';
-import { listAlbums } from '../../dummy_albums';
 
 @Injectable()
 export class CreateAlbumService {
 
-    constructor() { }
+    constructor(private _http: Http) { }
 
     createAlbum(album: Album) {
-        listAlbums.push(album);
+        return this._http.post(environment.serverUrl+"/album",album).map(response => response.json());      
     }
 
 

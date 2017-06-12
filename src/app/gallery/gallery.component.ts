@@ -15,11 +15,11 @@ export class GalleryComponent implements OnInit {
   constructor(private _galleryService: GalleryService, private _router: Router) { }
 
   ngOnInit() {
-    this._galleryService.getAlbums().subscribe(listAlbums => this.listAlbums = listAlbums)
+    this._galleryService.getAlbums().subscribe(listAlbums => { this.listAlbums = listAlbums;});
   }
 
   navigateToAlbum(id) {
-    this._router.navigate(["/gallery",id]);
+    this._router.navigate(["/gallery", id]);
   }
 
 }

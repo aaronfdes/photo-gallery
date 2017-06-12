@@ -15,6 +15,14 @@
       </div>
     </div>
   </div>
+  <div class="form-group">
+    <div class="form-check">
+      <label class="form-check-label">
+    <input class="form-check-input" type="checkbox"  name="publish" [(ngModel)]="publish">
+   Publish
+  </label>
+    </div>
+  </div>
   <button type="submit" class="btn btn-primary" [disabled]="!createForm.form.valid">Create Album</button>
   <button type="reset" class="btn btn-danger">Cancel</button>
 </form>
@@ -25,10 +33,13 @@
 
 <h4>{{albumName}}</h4>
 <div *ngIf="listImages">
-  <div class="card-columns">
+  <div class="card-deck">
     <div class="card m-2" *ngFor="let image of listImages; let i = index">
       <img class="card-img-top" src={{image}}>
-      <button type="button" class="btn btn-danger" (click)="removeImage(i)">Remove</button>
+      <div class="card-block">
+        <button type="button" class="btn btn-danger" (click)="removeImage(i)">Remove</button>
+        <button type="button" class="btn btn-primary" (click)="setCoverImage(image)" *ngIf="coverImage != image">Set Cover Image</button>
+      </div>
     </div>
   </div>
 </div>

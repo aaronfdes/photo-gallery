@@ -12,12 +12,12 @@ import 'rxjs/add/operator/switchMap';
 export class ImageListComponent implements OnInit {
 
   album: Album;
-  imageClicked:string;
+  imageClicked: string;
 
   constructor(private _imageListService: ImageListService, private _route: ActivatedRoute) { }
 
   ngOnInit() {
-    this._route.params.switchMap((params: Params) => this._imageListService.getAlbum(+params['id']))
+    this._route.params.switchMap((params: Params) => this._imageListService.getAlbum(params['id']))
       .subscribe(album => this.album = album);
   }
 

@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Http, Headers } from '@angular/http';
 
+import { environment } from '../../environments/environment';
 import { Album } from '../model/album';
-import { listAlbums } from '../dummy_albums';
 
 @Injectable()
 export class GalleryService {
 
-  constructor() { }
+  constructor(private _http: Http) { }
 
   getAlbums() {
-    return Observable.of(listAlbums.filter(album => album.published == true));
+    return this._http.get(environment.serverUrl + "/album").map(response => response.json());
   }
-
-
 }
 

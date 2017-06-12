@@ -1,10 +1,11 @@
 export class Album {
-
+    _id: string;
     listImages: Array<string>;
     coverImage: string;
     published: boolean = true;
 
-    constructor(public id: number, public name: string) {
+    constructor(public name: string) {
+        this._id = this.name.replace(" ","");
         this.listImages = new Array<string>();
     }
 

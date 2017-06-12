@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CreateAlbumService } from './create-album.service';
 import { Album } from '../../model/album';
-import { listAlbums } from '../../dummy_albums';
 
 @Component({
   selector: 'app-create-album',
@@ -12,8 +11,10 @@ export class CreateAlbumComponent implements OnInit {
 
   albumName: string;
   listImages: Array<string>;
+  coverImage:string;
+  publish:boolean = false;
 
-  constructor(private _createAlbumService:CreateAlbumService) { }
+  constructor(private _createAlbumService: CreateAlbumService) { }
 
   ngOnInit() {
     this.listImages = new Array<string>();
@@ -28,9 +29,15 @@ export class CreateAlbumComponent implements OnInit {
   }
 
   createAlbum() {
-    let album = new Album(listAlbums.length,this.albumName);
+    let album = new Album(this.albumName);
     album.listImages = this.listImages;
-    this._createAlbumService.createAlbum(album);
+    album.coverImage = this.coverImage; 
+    album.published = this.publish;
+    this._createAlbumService.createAlbum(album).subscribe(result => { console.log("Saved Successfully") }, err => { console.log("Failed to save") });
+  }
+
+  setCoverImage(image:string){
+    this.coverImage = image;
   }
 
 }
