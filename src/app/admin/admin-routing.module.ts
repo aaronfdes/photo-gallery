@@ -6,6 +6,7 @@ import { AuthGuard } from '../auth-guard.service';
 import { AdminComponent } from './admin.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { CreateAlbumComponent } from './create-album/create-album.component';
+import { AlbumListComponent } from './album-list/album-list.component';
 
 const adminRoutes: Routes = [
     {
@@ -17,6 +18,7 @@ const adminRoutes: Routes = [
                 path: '',
                 children: [
                     { path: '', component: AdminHomeComponent },
+                    { path: 'viewAll', component: AlbumListComponent },
                     { path: 'create', component: CreateAlbumComponent }
                 ]
             }
