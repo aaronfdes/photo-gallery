@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-
-import { environment } from '../../environments/environment';
-import { Album } from '../model/album';
+import { HttpService } from '../common/http.service';
 
 @Injectable()
 export class GalleryService {
 
-  constructor(private _http: Http) { }
+  constructor(private _httpService: HttpService) { }
 
   getAlbums() {
-    return this._http.get(environment.serverUrl + "/album").map(response => response.json());
+    return this._httpService.get("album");
   }
 }
 

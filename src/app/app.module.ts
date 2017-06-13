@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { HttpService } from './common/http.service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AdminModule } from './admin/admin.module';
 
@@ -32,7 +34,7 @@ import { ImageListService } from './image-list/image-list.service';
     AdminModule,
     AppRoutingModule
   ],
-  providers: [GalleryService,ImageListService],
+  providers: [GalleryService,ImageListService,HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
