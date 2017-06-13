@@ -1,10 +1,9 @@
 <h4>Gallery</h4>
 <div class="card-deck">
   <div class="card mt-2" *ngFor="let album of listAlbums">
-    <img class="card-img-top" src={{album.coverImage?album.coverImage:album.listImages[0]}}>
+    <img class="card-img-top handPointer" src={{album.coverImage?album.coverImage:album.listImages[0]}} (click)="navigateToAlbum(album._id)">
     <div class="card-block">
-      <h4 class="card-title">{{album.name}}</h4>
-       <button type="button" class="btn btn-info" (click)="navigateToAlbum(album._id)">View All</button>
+      <h4 class="card-title">{{album.name}}</h4>       
       <p class="card-text"><small class="text-muted">Number of Images: {{album.listImages.length}}</small></p>
     </div>
   </div>
