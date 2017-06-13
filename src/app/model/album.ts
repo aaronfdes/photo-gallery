@@ -13,10 +13,6 @@ export class Album {
         this.modifiedDate = new Date();
     }
 
-    setId() {
-        this._id = this.name.replace(new RegExp(" ", 'g'), "");
-    }
-
     addImage(image: string) {
         this.listImages.push(image);
     }

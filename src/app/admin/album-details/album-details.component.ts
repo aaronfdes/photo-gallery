@@ -42,7 +42,6 @@ export class AlbumDetailsComponent implements OnInit {
           this.showError = true;
         });
     } else {
-      this.album.setId();
       this._albumDetailsService.createAlbum(this.album)
         .subscribe(result => {
           this.showSuccess = true;
