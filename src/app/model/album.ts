@@ -9,7 +9,7 @@ export class Album {
     }
 
     setId() {
-        this._id = this.name.replace(" ", "");
+        this._id = this.name.replace(new RegExp(" ", 'g'), "");
     }
 
     addImage(image: string) {
