@@ -15,6 +15,7 @@ export class AlbumDetailsService {
     }
 
     updateAlbum(album: Album) {
+        album.modifiedDate = new Date();
         return this._httpService.put("admin/album", album);
     }
 

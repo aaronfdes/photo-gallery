@@ -11,7 +11,7 @@ export class AlbumListService {
         return this._httpService.get("admin/album");
     }
 
-    deleteAlbum(id: string) {
+    deleteAlbum(id: string) {        
         return this._httpService.delete("admin/album/" + id);
     }
 

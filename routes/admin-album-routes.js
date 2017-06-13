@@ -5,7 +5,7 @@ var album = require('../models/album.js');
 
 /* GET ALL published albums */
 router.get('/', function (req, res, next) {
-  album.find({}, function (err, albums) {
+  album.find({deletedDate : {$eq : null}}, function (err, albums) {
     if (err) return next(err);
     res.json(albums);
   });
@@ -21,9 +21,13 @@ router.get('/:album', function (req, res, next) {
 
 /* Delete individual Album */
 router.delete('/:album', function (req, res, next) {
-  album.findByIdAndRemove({ _id: req.params.album }, function (err, albums) {
+  album.findById({ _id: req.params.album }, function (err, albums) {
     if (err) return next(err);
-    res.json(albums);
+    albums.deletedDate = new Date();
+    album.findByIdAndUpdate(albums._id, albums, function (err, album) {
+      if (err) return next(err);
+      res.json(album);
+    });
   });
 });
 

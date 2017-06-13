@@ -5,7 +5,7 @@ var album = require('../models/album.js');
 
 /* GET ALL published albums */
 router.get('/', function (req, res, next) {
-  album.find({ published: true }, function (err, albums) {
+  album.find({ $and: [{ published: true }, { deletedDate: { $eq: null } }] }, function (err, albums) {
     if (err) return next(err);
     res.json(albums);
   });
