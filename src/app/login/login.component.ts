@@ -10,21 +10,22 @@ export class LoginComponent {
 
     username: string;
     password: string;
+    showError: boolean = false;
 
     constructor(public authService: AuthService, public router: Router) { }
 
     login() {
-        this.authService.login(this.username, this.password).subscribe(() => {
-
+        this.showError = false;
+        this.authService.login(this.username, this.password).subscribe((response) => {
+            this.authService.isLoggedIn = response;
             if (this.authService.isLoggedIn) {
-                // Get the redirect URL from our auth service
-                // If no redirect has been set, use the default
-                let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '';
-                // Redirect the user
-                this.router.navigate([redirect]);
+                this.router.navigate([this.authService.redirectUrl ? this.authService.redirectUrl : '']);
+            } else {
+                this.showError = true;
             }
         });
     }
+
     logout() {
         this.authService.logout();
         this.router.navigate([""]);

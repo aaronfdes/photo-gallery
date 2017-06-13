@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var login = require('./routes/login-routes');
 var album = require('./routes/album-routes');
 var adminAlbum = require('./routes/admin-album-routes');
 var app = express();
@@ -27,6 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ 'extended': 'false' }));
 app.use(express.static(path.join(__dirname, 'dist')));
 
+app.use('/api/login', login);
 app.use('/api/album', album);
 app.use('/api/admin/album', adminAlbum);
 

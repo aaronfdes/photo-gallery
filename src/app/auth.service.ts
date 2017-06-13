@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-
-import { Observable } from 'rxjs/Observable';
+import { HttpService } from './common/http.service';
 
 @Injectable()
 export class AuthService {
@@ -9,12 +8,10 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
-  login(username: string, password: string): Observable<boolean> {
-    //make api call and check this 
-    if (username == "a" && password == "a") {
-      this.isLoggedIn = true;
-    }
-    return Observable.of(true);
+  constructor(private _httpService: HttpService) { }
+
+  login(username: string, password: string) {
+    return this._httpService.post("login", { username: username, password: password });
   }
 
   logout(): void {
