@@ -28,14 +28,12 @@ router.delete('/:album', function (req, res, next) {
 });
 
 /* Update individual Album */
-router.put('/:album', function (req, res, next) {
-  /*album.findById({ _id: req.params.album }, function (err, albums) {
+router.put('/', function (req, res, next) {
+  album.findByIdAndUpdate(req.body._id, req.body, function (err, album) {
     if (err) return next(err);
-    res.json(albums);
-  });*/
+    res.json(album);
+  });
 });
-
-
 
 /* SAVE album */
 router.post('/', function (req, res, next) {

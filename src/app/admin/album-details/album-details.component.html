@@ -1,0 +1,48 @@
+<div *ngIf="album">
+  <h5 *ngIf="album._id; else elseBlock">Edit Album</h5>
+  <ng-template #elseBlock>
+    <h5>Create Album</h5>
+  </ng-template>
+  <form #createForm="ngForm" (ngSubmit)="saveAlbum()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Album Name</label>
+      <input type="text" class="form-control" id="albumName" placeholder="Album Name" required name="name" [(ngModel)]="album.name">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Add Image</label>
+      <div class="row">
+        <div class="col-11">
+          <input type="text" class="form-control" id="newImage" name="newImage" #newImage>
+        </div>
+        <div class="col-1">
+          <button type="button" class="btn btn-primary" (click)="addImage(newImage.value)">Add</button>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-check">
+        <label class="form-check-label">
+    <input class="form-check-input" type="checkbox"  name="publish" [(ngModel)]="album.published">
+   Publish
+  </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!createForm.form.valid">Save Album</button>
+    <button type="reset" class="btn btn-danger">Cancel</button>
+  </form>
+
+  <hr/>
+  <h5>PREVIEW</h5>
+  <hr/>
+
+  <h4>{{album.name}}</h4>
+  <div class="card-deck">
+    <div class="card m-2" *ngFor="let image of album.listImages; let i = index">
+      <img class="card-img-top" src={{image}}>
+      <div class="card-block">
+        <button type="button" class="btn btn-danger" (click)="removeImage(i)">Remove</button>
+        <button type="button" class="btn btn-primary" (click)="setCoverImage(image)" *ngIf="album.coverImage != image">Set Cover Image</button>
+      </div>
+    </div>
+  </div>
+</div>

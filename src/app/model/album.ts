@@ -5,8 +5,11 @@ export class Album {
     published: boolean = true;
 
     constructor(public name: string) {
-        this._id = this.name.replace(" ","");
         this.listImages = new Array<string>();
+    }
+
+    setId() {
+        this._id = this.name.replace(" ", "");
     }
 
     addImage(image: string) {

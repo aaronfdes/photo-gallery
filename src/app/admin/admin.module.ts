@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
-import { CreateAlbumComponent } from './create-album/create-album.component';
+import { AlbumDetailsComponent } from './album-details/album-details.component';
 import { AlbumListComponent } from './album-list/album-list.component';
-import { CreateAlbumService } from './create-album/create-album.service';
+import { AlbumDetailsService } from './album-details/album-details.service';
 import { AlbumListService } from './album-list/album-list.service';
 
 @NgModule({
@@ -19,11 +19,11 @@ import { AlbumListService } from './album-list/album-list.service';
     declarations: [
         AdminComponent,
         AdminHomeComponent,
-        CreateAlbumComponent,
+        AlbumDetailsComponent,
         AlbumListComponent
     ],
     providers: [
-        CreateAlbumService,
+        AlbumDetailsService,
         AlbumListService
     ]
 })

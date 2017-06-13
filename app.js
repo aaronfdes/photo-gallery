@@ -16,7 +16,6 @@ mongoose.connect('mongodb://localhost/photo-gallery')
 
 /* CORS- Enable for local */
 app.use(function (req, res, next) {
-    console.log("CORS ENABLED");
     res.header("Access-Control-Allow-Origin", "http://localhost:4200");    
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");

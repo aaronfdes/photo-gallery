@@ -4,7 +4,7 @@
     <img class="card-img-top" src={{album.coverImage?album.coverImage:album.listImages[0]}}>
     <div class="card-block">
       <h4 class="card-title">{{album.name}}</h4>
-       <button type="button" class="btn btn-info" (click)="navigateToAlbum(album._id)">View All</button>
+       <button type="button" class="btn btn-info" (click)="navigateToAlbum(album._id)">Edit</button>
        <button type="button" class="btn btn-danger" (click)="deleteAlbum(album._id)">Delete</button>
       <p class="card-text"><small class="text-muted">Number of Images: {{album.listImages.length}}</small></p>
     </div>

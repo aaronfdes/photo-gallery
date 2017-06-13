@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AlbumListService } from './album-list.service';
 import { Album } from '../../model/album';
 
@@ -12,7 +12,7 @@ export class AlbumListComponent implements OnInit {
 
   listAlbums = new Array<Album>();
 
-  constructor(private _albumListService: AlbumListService, private _router: Router) { }
+  constructor(private _albumListService: AlbumListService, private _router: Router, private _route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getAllAlbums();
@@ -20,6 +20,10 @@ export class AlbumListComponent implements OnInit {
 
   deleteAlbum(id: string) {
     this._albumListService.deleteAlbum(id).subscribe(response => { this.getAllAlbums(); });
+  }
+
+  navigateToAlbum(id: string) {
+    this._router.navigate(["/admin/albumDetails", id]);
   }
 
   private getAllAlbums() {
