@@ -1,3 +1,9 @@
+<div class="alert alert-danger my-2" role="alert" *ngIf="showError">
+  <strong>Error</strong> Could not save the album at this time.
+</div>
+<div class="alert alert-info my-2" role="alert" *ngIf="showSuccess">
+  Saved Successfully.
+</div>
 <div *ngIf="album">
   <h5 *ngIf="album._id; else elseBlock">Edit Album</h5>
   <ng-template #elseBlock>
@@ -12,10 +18,10 @@
       <label for="exampleInputEmail1">Add Image</label>
       <div class="row">
         <div class="col-11">
-          <input type="text" class="form-control" id="newImage" name="newImage" #newImage>
+          <input type="text" class="form-control" id="newImage" name="newImage" [(ngModel)]="newImage">
         </div>
         <div class="col-1">
-          <button type="button" class="btn btn-primary" (click)="addImage(newImage.value)">Add</button>
+          <button type="button" class="btn btn-primary" (click)="addImage()">Add</button>
         </div>
       </div>
     </div>
@@ -28,7 +34,7 @@
       </div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!createForm.form.valid">Save Album</button>
-    <button type="reset" class="btn btn-danger">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="goBack()">Cancel</button>
   </form>
 
   <hr/>

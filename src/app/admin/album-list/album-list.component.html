@@ -1,8 +1,8 @@
 <h4>Gallery</h4>
-<div class="card-deck">
-  <div class="card mt-2" *ngFor="let album of listAlbums">
+<div class="card-group">
+  <div class="card m-1" *ngFor="let album of listAlbums">
     <img class="card-img-top" src={{album.coverImage?album.coverImage:album.listImages[0]}}>
-    <div class="card-block">
+    <div class="card-footer">
       <h4 class="card-title">{{album.name}}</h4>
        <button type="button" class="btn btn-info" (click)="navigateToAlbum(album._id)">Edit</button>
        <button type="button" class="btn btn-danger" (click)="deleteAlbum(album._id)">Delete</button>

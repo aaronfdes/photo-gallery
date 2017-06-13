@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 import { AlbumDetailsService } from './album-details.service';
 import { Album } from '../../model/album';
 
@@ -11,16 +12,20 @@ import { Album } from '../../model/album';
 export class AlbumDetailsComponent implements OnInit {
 
   album: Album;
+  newImage:string;
+  showError: boolean;
+  showSuccess: boolean;
 
-  constructor(private _albumDetailsService: AlbumDetailsService, private _route: ActivatedRoute) { }
+  constructor(private _albumDetailsService: AlbumDetailsService, private _route: ActivatedRoute,private _location:Location) { }
 
   ngOnInit() {
     this._route.params.switchMap((params: Params) => this._albumDetailsService.getAlbum(params['id']))
       .subscribe(album => this.album = album);
   }
 
-  addImage(image) {
-    this.album.listImages.push(image);
+  addImage() {
+    this.album.listImages.push(this.newImage);
+    this.newImage = "";
   }
 
   removeImage(i) {
@@ -28,26 +33,36 @@ export class AlbumDetailsComponent implements OnInit {
   }
 
   saveAlbum() {
+    this.resetMessages();
     if (this.album._id) {
       this._albumDetailsService.updateAlbum(this.album)
         .subscribe(result => {
-          console.log("Updated Successfully")
+          this.showSuccess = true;
         }, err => {
-          console.log("Failed to Update")
+          this.showError = true;
         });
     } else {
       this.album.setId();
       this._albumDetailsService.createAlbum(this.album)
         .subscribe(result => {
-          console.log("Saved Successfully")
+          this.showSuccess = true;
         }, err => {
-          console.log("Failed to save")
+          this.showError = true;
         });
     }
   }
 
   setCoverImage(image: string) {
     this.album.coverImage = image;
+  }
+
+  goBack(){
+    this._location.back();
+  }
+
+  private resetMessages() {
+    this.showError = false;
+    this.showSuccess = false;
   }
 
 }
