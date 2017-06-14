@@ -1,13 +1,13 @@
 <h4>Gallery</h4>
-<div class="card-group">
-  <div class="card m-1" *ngFor="let album of listAlbums">
-    <img class="card-img-top handPointer" src={{album.coverImage}} (click)="navigateToAlbum(album._id)">
-    <div class="card-block">
-      
-    </div>
-    <div class="card-footer">
-      <h4 class="card-title">{{album.name}}</h4>       
-      <p class="card-text"><small class="text-muted">Number of Images: {{album.numberOfImages}}</small></p>
+
+<div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-12 my-2" *ngFor="let album of listAlbums">
+    <div class="card">
+      <img class="img-fluid handPointer" src={{album.coverImage}} (click)="navigateToAlbum(album._id)">
+      <div class="card-block">
+        <h4 class="card-title">{{album.name}}</h4>
+        <p class="card-text"><small class="text-muted">Number of Images: {{album.numberOfImages}}</small></p>
+      </div>
     </div>
   </div>
 </div>
