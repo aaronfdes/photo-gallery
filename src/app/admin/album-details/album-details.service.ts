@@ -11,6 +11,9 @@ export class AlbumDetailsService {
     constructor(private _httpService: HttpService, private _router: Router) { }
 
     createAlbum(album: Album) {
+        if(!album.coverImage){
+            album.coverImage = album.listImages[0];
+        }
         return this._httpService.post("admin/album", album);
     }
 

@@ -5,7 +5,7 @@ var album = require('../models/album.js');
 
 /* GET ALL published albums */
 router.get('/', function (req, res, next) {
-  album.find({ $and: [{ published: true }, { deletedDate: { $eq: null } }] }).sort({ createdDate: -1 }).exec(function (err, albums) {
+  album.aggregate([{ $match: { $and: [{ published: true }, { deletedDate: { $eq: null } }] } }, { $sort: { createdDate: -1 } }, { $project: { name: 1, coverImage: 1, numberOfImages: { $size: "$listImages" } } }]).exec(function (err, albums) {
     if (err) return next(err);
     res.json(albums);
   });
@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
 
 /* GET individual Album */
 router.get('/:album', function (req, res, next) {
-  album.findById({ _id: req.params.album }, function (err, albums) {
+  album.findOne({ $and: [{ _id: req.params.album }, { published: true }, { deletedDate: { $eq: null } }] }, function (err, albums) {
     if (err) return next(err);
     res.json(albums);
   });

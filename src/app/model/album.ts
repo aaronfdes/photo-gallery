@@ -6,6 +6,7 @@ export class Album {
     createdDate:Date;
     modifiedDate:Date;
     deletedDate:Date;
+    numberOfImages:number;
 
     constructor(public name: string) {
         this.listImages = new Array<string>();
