@@ -13,7 +13,7 @@ app.use(helmet());
 
 log4js.configure({
     appenders: [
-        { type: 'console' },
+       /* { type: 'console' },*/
         {
             type: 'file', filename: 'logs/app.log',
             "maxLogSize": 20480,
