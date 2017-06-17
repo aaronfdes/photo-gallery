@@ -10,8 +10,11 @@ var adminAlbum = require('./routes/admin-album-routes');
 var app = express();
 
 mongoose.Promise = global.Promise;
-
-mongoose.connect('mongodb://localhost/photo-gallery')
+var options = {
+  user: 'photo-user',
+  pass: 'photo-user'
+}
+mongoose.connect('mongodb://localhost/photo-gallery',options)
     .then(() => console.log('connection to mongodb successful'))
     .catch((err) => console.error(err));
 

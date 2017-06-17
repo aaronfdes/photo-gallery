@@ -1,0 +1,36 @@
+1. Start MongoDb
+mongod --port 27017 --dbpath c:/data/db
+
+2. Connect to mongo console and run the following
+
+use admin
+db.createUser(
+  {
+    user: "myUserAdmin",
+    pwd: "abc123",
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+  }
+)
+
+3.disconnect from mongo console and mongodb
+
+4. start mongodb with the following command
+mongod --port 27017 --dbpath c:/data/db --auth
+
+5. connect to mongo bu running this command 
+mongo --port 27017 -u "myUserAdmin" -p "abc123" --authenticationDatabase "admin"
+
+6. Create photo-user
+use photo-gallery
+db.createUser(
+  {
+    user: "photo-user",
+    pwd: "photo-user",
+    roles: [ { role: "readWrite", db: "photo-gallery"} ]
+  }
+)
+
+7. exit mongo
+
+8. connect to mongo using the photo-user user
+mongo --port 27017 -u photo-user-p "photo-user" --authenticationDatabase "photo-gallery"
