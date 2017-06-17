@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
+var helmet = require('helmet')
 var log4js = require("log4js");
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -8,6 +9,7 @@ var login = require('./routes/login-routes');
 var album = require('./routes/album-routes');
 var adminAlbum = require('./routes/admin-album-routes');
 var app = express();
+app.use(helmet());
 
 log4js.configure({
     appenders: [
