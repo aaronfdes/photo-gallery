@@ -11,7 +11,7 @@ var app = express();
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/photo-gallery')
+mongoose.connect('mongodb://localhost/photo-gallery-2')
     .then(() => console.log('connection to mongodb successful'))
     .catch((err) => console.error(err));
 

@@ -12,7 +12,8 @@ export class AlbumDetailsService {
 
     createAlbum(album: Album) {
         if(!album.coverImage){
-            album.coverImage = album.listImages[0];
+            //TODO add empty cover image here
+            album.coverImage = album.listImages[0]?album.listImages[0].url:"";
         }
         return this._httpService.post("admin/album", album);
     }

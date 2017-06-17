@@ -1,6 +1,8 @@
+import {Image} from './image';
+
 export class Album {
     _id: string;
-    listImages: Array<string>;
+    listImages: Array<Image>;
     coverImage: string;
     published: boolean = true;
     createdDate:Date;
@@ -9,13 +11,9 @@ export class Album {
     numberOfImages:number;
 
     constructor(public name: string) {
-        this.listImages = new Array<string>();
+        this.listImages = new Array<Image>();
         this.createdDate = new Date();
         this.modifiedDate = new Date();
-    }
-
-    addImage(image: string) {
-        this.listImages.push(image);
     }
 
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { AlbumDetailsService } from './album-details.service';
 import { Album } from '../../model/album';
+import { Image } from '../../model/image';
 
 @Component({
   selector: 'app-create-album',
@@ -24,7 +25,7 @@ export class AlbumDetailsComponent implements OnInit {
   }
 
   addImage() {
-    this.album.listImages.push(this.newImage);
+    this.album.listImages.push(new Image(this.newImage));
     this.newImage = "";
   }
 
@@ -34,6 +35,7 @@ export class AlbumDetailsComponent implements OnInit {
 
   saveAlbum() {
     this.resetMessages();
+    console.log(this.album);
     if (this.album._id) {
       this._albumDetailsService.updateAlbum(this.album)
         .subscribe(result => {
