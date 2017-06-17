@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 var app = require('../app');
+var log4js = require("log4js");
+var appLog = log4js.getLogger();
 var http = require('http');
 
 var port = process.env.PORT || '3000';
@@ -21,5 +23,5 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  console.log('Listening on ' + bind);
+  appLog.info('Listening on ' + bind);
 }
