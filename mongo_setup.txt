@@ -33,4 +33,4 @@ db.createUser(
 7. exit mongo
 
 8. connect to mongo using the photo-user user
-mongo --port 27017 -u photo-user-p "photo-user" --authenticationDatabase "photo-gallery"
+mongo --port 27017 -u "photo-user" -p "photo-user" --authenticationDatabase "photo-gallery"

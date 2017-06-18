@@ -17,8 +17,9 @@ export class LoginComponent {
     login() {
         this.showError = false;
         this.authService.login(this.username, this.password).subscribe((response) => {
-            this.authService.isLoggedIn = response;
+            this.authService.isLoggedIn = response.success;
             if (this.authService.isLoggedIn) {
+                this.authService.jwt = response.token;
                 this.router.navigate([this.authService.redirectUrl ? this.authService.redirectUrl : '']);
             } else {
                 this.showError = true;

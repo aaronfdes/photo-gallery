@@ -4,6 +4,7 @@ import { HttpService } from './common/http.service';
 @Injectable()
 export class AuthService {
   isLoggedIn: boolean = false;
+  jwt:string;
 
   // store the URL so we can redirect after logging in
   redirectUrl: string;
