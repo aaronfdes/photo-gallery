@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminHomeService } from './admin-home.service'
+import { Album } from '../../model/album';
 
 @Component({
   selector: 'app-admin-home',
@@ -8,13 +10,16 @@ import { Router } from '@angular/router';
 })
 export class AdminHomeComponent implements OnInit {
 
-  constructor(private _router: Router) { }
+  album: Album;
+
+  constructor(private _router: Router, private _adminHomeService: AdminHomeService) { }
 
   ngOnInit() {
+    this._adminHomeService.getMostViewedAlbum().subscribe(album => this.album = album);
   }
 
   createAlbum() {
-    this._router.navigate(["admin/albumDetails","new"]);
+    this._router.navigate(["admin/albumDetails", "new"]);
   }
 
 }

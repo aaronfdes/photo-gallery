@@ -8,7 +8,7 @@ var myErrorHandler = require('../error-handler');
 /* GET ALL published albums */
 router.get('/', function (req, res, next) {
   mylog.logInfo("called", req, res);
-  album.aggregate([{ $match: { $and: [{ deletedDate: { $eq: null } }] } }, { $sort: { createdDate: -1 } }, { $project: { name: 1, coverImage: 1, numberOfImages: { $size: "$listImages" } } }]).exec(function (err, albums) {
+  album.aggregate([{ $match: { $and: [{ deletedDate: { $eq: null } }] } }, { $sort: { createdDate: -1 } }, { $project: { name: 1, coverImage: 1, numberOfImages: { $size: "$listImages" }, views: 1 } }]).exec(function (err, albums) {
     if (err) {
       return myErrorHandler.handleError(err, req, res);
     }
@@ -61,6 +61,5 @@ router.post('/', function (req, res, next) {
     res.json(post);
   });
 });
-
 
 module.exports = router;

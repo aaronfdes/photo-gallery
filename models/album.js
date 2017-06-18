@@ -8,7 +8,8 @@ var albumSchema = new mongoose.Schema({
     listImages: [String],
     createdDate: { type: Date, default: Date.now },
     modifiedDate: Date,
-    deletedDate: Date
+    deletedDate: Date,
+    views: { type: Number, default: 0 }
 });
 
 module.exports = mongoose.model('album', albumSchema);

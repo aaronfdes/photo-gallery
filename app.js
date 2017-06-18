@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var login = require('./routes/login-routes');
 var album = require('./routes/album-routes');
+var metrics = require('./routes/admin-metric-routes');
 var adminAlbum = require('./routes/admin-album-routes');
 var jwt = require('jsonwebtoken');
 var app = express();
@@ -14,7 +15,7 @@ app.use(helmet());
 
 log4js.configure({
     appenders: [
-       /* { type: 'console' },*/
+      /*  { type: 'console' },*/
         {
             type: 'file', filename: 'logs/app.log',
             "maxLogSize": 20480,
@@ -78,5 +79,6 @@ app.use(function (req, res, next) {
     }
 });
 app.use('/api/admin/album', adminAlbum);
+app.use('/api/admin/metric', metrics);
 
 module.exports = app;

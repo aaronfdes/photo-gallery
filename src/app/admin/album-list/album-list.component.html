@@ -2,10 +2,13 @@
 <div class="row">
   <div class="col-lg-4 col-md-6 col-sm-12 my-2" *ngFor="let album of listAlbums">
     <div class="card">
-      <img class="img-fluid handPointer" src={{album.coverImage}} (click)="navigateToAlbum(album._id)">
+      <img class="img-fluid" src={{album.coverImage}} >
       <div class="card-block">
         <h4 class="card-title">{{album.name}}</h4>
+        <button type="button" class="btn btn-info" (click)="navigateToAlbum(album._id)">Edit</button>
+        <button type="button" class="btn btn-danger" (click)="deleteAlbum(album._id)">Delete</button>
         <p class="card-text"><small class="text-muted">Number of Images: {{album.numberOfImages}}</small></p>
+        <p class="card-text"><small class="text-muted">Number of Views: {{album.views}}</small></p>
       </div>
     </div>
   </div>

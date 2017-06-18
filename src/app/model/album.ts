@@ -3,10 +3,11 @@ export class Album {
     listImages: Array<string>;
     coverImage: string;
     published: boolean = true;
-    createdDate:Date;
-    modifiedDate:Date;
-    deletedDate:Date;
-    numberOfImages:number;
+    createdDate: Date;
+    modifiedDate: Date;
+    deletedDate: Date;
+    numberOfImages: number;
+    views: number;
 
     constructor(public name: string) {
         this.listImages = new Array<string>();

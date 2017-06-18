@@ -9,6 +9,7 @@ import { AlbumDetailsComponent } from './album-details/album-details.component';
 import { AlbumListComponent } from './album-list/album-list.component';
 import { AlbumDetailsService } from './album-details/album-details.service';
 import { AlbumListService } from './album-list/album-list.service';
+import { AdminHomeService } from './admin-home/admin-home.service';
 
 @NgModule({
     imports: [
@@ -24,7 +25,8 @@ import { AlbumListService } from './album-list/album-list.service';
     ],
     providers: [
         AlbumDetailsService,
-        AlbumListService
+        AlbumListService,
+        AdminHomeService
     ]
 })
 export class AdminModule { }
