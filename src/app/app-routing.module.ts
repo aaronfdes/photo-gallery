@@ -11,6 +11,7 @@ const appRoutes: Routes = [
     { path: 'gallery', component: GalleryComponent },
     { path: 'gallery/:id', component: ImageListComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule' },
     { path: '**', redirectTo: '/home' }
 ];
 
@@ -22,4 +23,4 @@ const appRoutes: Routes = [
         RouterModule
     ]
 })
-export class AppRoutingModule  { }
+export class AppRoutingModule { }
